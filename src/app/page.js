@@ -25,6 +25,7 @@ export default function Home() {
               </div>
               <div className="col-6">
                 <button type="button" className="btn btn-primary w-100 h-100">
+                  <img src="/metamask.svg" width={32} className="me-2" />
                   Conectar e criar Link
                 </button>
               </div>
