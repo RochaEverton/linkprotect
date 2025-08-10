@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import hash from "object-hash";
 
 export default function Home() {
 
@@ -18,7 +19,8 @@ export default function Home() {
   }
 
   function btnCreateClick() {
-    setMessage(url + " " + fee)
+    const linkId = hash(url).slice(0, 5);
+    setMessage(url + " " + fee + " " + linkId)
   }
 
   return (
