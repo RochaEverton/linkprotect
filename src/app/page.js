@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import hash from "object-hash";
+import { connectContract } from "@/services/Web3Service";
 
 export default function Home() {
 
@@ -20,7 +21,8 @@ export default function Home() {
 
   function btnCreateClick() {
     const linkId = hash(url).slice(0, 5);
-    setMessage(url + " " + fee + " " + linkId)
+    setMessage("");
+    connectContract();
   }
 
   return (
