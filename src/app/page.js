@@ -4,7 +4,7 @@ import { useState } from "react";
 import hash from "object-hash";
 import { addLink } from "@/services/Web3Service";
 
-const NEXT_PUBLIC_SITE_URL = "https://seu-projeto.vercel.app"
+const NEXT_PUBLIC_SITE_URL = "https://linkprotect-lime.vercel.app/"
 
 export default function Home() {
 
