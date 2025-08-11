@@ -4,6 +4,8 @@ import { useState } from "react";
 import hash from "object-hash";
 import { addLink } from "@/services/Web3Service";
 
+const NEXT_PUBLIC_SITE_URL = "https://seu-projeto.vercel.app"
+
 export default function Home() {
 
   const [message, setMessage] = useState("");
@@ -25,7 +27,10 @@ export default function Home() {
       .then(() => {
         setUrl("");
         setFee("0");
-        setMessage(`Seu link foi criado com sucesso: http://localhost:3000/${linkId}`);
+        const origin = typeof window !== "undefined"
+          ? window.location.origin
+          : process.env.NEXT_PUBLIC_SITE_URL
+        setMessage(`Seu link foi criado com sucesso: ${origin}/${linkId}`);
       })
       .catch(err => setMessage(err.message));
   }
@@ -48,7 +53,7 @@ export default function Home() {
             <div className="row mb-3">
               <div className="col-6">
                 <div className="form-floating">
-                  <input type="number" id="fee" className="form-control" value={fee || 0} onChange={onFeeChange} />
+                  <input type="number" id="fee" className="form-control" min="2" step="1" placeholder="Valor minimo >= 2" required value={fee || 2} onChange={onFeeChange} />
                   <label htmlFor="fee">Taxa por clique (wei):</label>
                 </div>
               </div>
