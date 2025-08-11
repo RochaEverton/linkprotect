@@ -1,7 +1,7 @@
 import Web3 from "web3";
 import ABI from "./ABI.json"
 
-const CONTRACT_ADDRESS = "0xf601ec85826c6886eE55A0cf416151ccdd1705f5";
+const CONTRACT_ADDRESS = "0x3dc202e6f5b99b4d8a634ce7c51076a692e6bfe6";
 
 export async function connectContract() {
     if (!window.ethereum) throw new Error("Sem MetaMask instalada");
@@ -13,12 +13,19 @@ export async function connectContract() {
     return new web3.eth.Contract(ABI, CONTRACT_ADDRESS, { from: accounts[0] });
 }
 
-export async function addLink({ url, linkId, feeInWey }){
+export async function addLink({ url, linkId, feeInWei }){
     const contract = await connectContract();
-    return contract.methods.addLink(url, linkId, feeInWey).send();
+    return contract.methods.addLink(url, linkId, feeInWei).send();
 }
 
 export async function getLink(linkId){
     const contract = await connectContract();
     return contract.methods.getLink(linkId).call();
+}
+
+export async function payLink(linkId, valueInWei){
+    const contract = await connectContract();
+    return contract.methods.payLink(linkId).send({
+        value: valueInWei
+    });
 }

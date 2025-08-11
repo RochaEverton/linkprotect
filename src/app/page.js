@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -22,7 +21,7 @@ export default function Home() {
   function btnCreateClick() {
     const linkId = hash(url).slice(0, 5);
     setMessage("Enviando seu link para blockchain...aguarde...");
-    addLink({ url, linkId, feeInWey:fee })
+    addLink({ url, linkId, feeInWei:fee })
       .then(() => {
         setUrl("");
         setFee("0");
@@ -32,7 +31,6 @@ export default function Home() {
   }
 
   return (
-    <>
       <div className="container px-4 py-5">
         <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
           <div className="col-6">
@@ -69,6 +67,5 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
   );
 }
