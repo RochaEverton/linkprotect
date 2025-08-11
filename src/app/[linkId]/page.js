@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
+import { getLink } from "@/services/Web3Service";
 
 export default function Home() {
 
@@ -12,6 +13,15 @@ export default function Home() {
 
   useEffect(() => {
     setMessage("Buscando dados do link...aguarde...");
+    getLink(params.linkId)
+      .then(link => {
+        setMessage("");
+        if(link.url)
+          window.location.href = link.url;
+        else
+          setLink(link);
+      })
+      .catch(err => setMessage(err.message));
   }, [])
 
   function btnAccessClick(){
@@ -29,7 +39,7 @@ export default function Home() {
             <h1 className="display-5 fw-bold text-body-emphasis lh-1 mb-3">Link Protected</h1>
             <p className="lead">Este link está protegido pelo Link Protect.</p>
             <hr />
-            <p>Para acessar o conteúdo original, conecte sua carteira abaixo e confirme o pagamento da taxa de <strong>0 wei</strong>.</p>
+            <p>Para acessar o conteúdo original, conecte sua carteira abaixo e confirme o pagamento da taxa de <strong>{link.fee} wei</strong>.</p>
             <div className="row mb-3">
               <div className="col-6">
                 <button type="button" className="btn btn-primary w-100 h-100" onClick={btnAccessClick}>

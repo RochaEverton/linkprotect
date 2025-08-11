@@ -17,3 +17,8 @@ export async function addLink({ url, linkId, feeInWey }){
     const contract = await connectContract();
     return contract.methods.addLink(url, linkId, feeInWey).send();
 }
+
+export async function getLink(linkId){
+    const contract = await connectContract();
+    return contract.methods.getLink(linkId).call();
+}
