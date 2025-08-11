@@ -1,5 +1,19 @@
+"use client";
+
+import { useState } from "react";
+import { useParams } from "next/navigation";
 
 export default function Home() {
+
+  const [message, setMessage] = useState("");
+  const [link, setLink] = useState({ fee: "0" });
+
+  const params = useParams();
+
+  function btnAccessClick(){
+
+  };
+
   return (
     <>
       <div className="container px-4 py-5">
@@ -14,13 +28,17 @@ export default function Home() {
             <p>Para acessar o conteúdo original, conecte sua carteira abaixo e confirme o pagamento da taxa de <strong>0 wei</strong>.</p>
             <div className="row mb-3">
               <div className="col-6">
-                <button type="button" className="btn btn-primary w-100 h-100">
+                <button type="button" className="btn btn-primary w-100 h-100" onClick={btnAccessClick}>
                   <img src="/metamask.svg" width={32} className="me-2" />
                   Pagar e acessar Link
                 </button>
               </div>
             </div>
-            <div className="alert alert-success p-3 col-12 mt-3" role="alert">Teste de Mensagem</div>
+            {
+              message
+                ? <div className="alert alert-success p-3 col-12 mt-3" role="alert">{message}</div>
+                : <></>
+            }
           </div>
         </div>
       </div>
