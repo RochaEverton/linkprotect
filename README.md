@@ -9,17 +9,17 @@ Seu objetivo é permitir a criação de links protegidos por pagamento on-chain.
 
 *(Adicione aqui um GIF mostrando o fluxo de criar link, pagar e acessar o conteúdo)*
 
-![Demonstração do LinkProtect](/demo.gif)
+![Demonstração do LinkProtect](public/demo.gif)
 
 ---
 
 ## 📸 Capturas de Tela
 
 **Tela inicial - Criar link protegido**  
-![Tela inicial](/tela-criar-link.png)
+![Tela inicial](public/tela-criar-link.png)
 
 **Página de pagamento do link**  
-![Página de pagamento](/tela-pagamento.png)
+![Página de pagamento](public/tela-pagamento.png)
 
 ---
 
