@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 
 export default function Home() {
@@ -9,6 +9,10 @@ export default function Home() {
   const [link, setLink] = useState({ fee: "0" });
 
   const params = useParams();
+
+  useEffect(() => {
+    setMessage("Buscando dados do link...aguarde...");
+  }, [])
 
   function btnAccessClick(){
 
