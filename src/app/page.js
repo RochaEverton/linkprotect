@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import hash from "object-hash";
-import { connectContract } from "@/services/Web3Service";
+import { addLink } from "@/services/Web3Service";
 
 export default function Home() {
 
@@ -21,8 +21,14 @@ export default function Home() {
 
   function btnCreateClick() {
     const linkId = hash(url).slice(0, 5);
-    setMessage("");
-    connectContract();
+    setMessage("Enviando seu link para blockchain...aguarde...");
+    addLink({ url, linkId, feeInWey:fee })
+      .then(() => {
+        setUrl("");
+        setFee("0");
+        setMessage(`Seu link foi criado com sucesso: http://localhost:3000/${linkId}`);
+      })
+      .catch(err => setMessage(err.message));
   }
 
   return (
